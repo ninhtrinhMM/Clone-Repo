@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ml-prediction-service-monitor
+  namespace: monitoring
+  labels:
+    app: ml-prediction-service
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: service-monitor  # Thay thế bằng label của service trong deployment
+  endpoints:
+  - port: http  # Tên Port trong service của deployment
+    path: /metrics
+    interval: 30s
+    scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+    - default  # Thay thế bằng namespace của service trong Deplotment
