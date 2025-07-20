@@ -1,0 +1,123 @@
+# Prometheus Values Configuration
+prometheus:
+  enabled: true
+  
+  # Cấu hình Prometheus Server
+  prometheusSpec:
+    # Retention time cho metrics
+    retention: 15d
+    
+    # Storage configuration
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: "standard"  # Sử dụng storage class của GCP
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+    
+    # Resource limits
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 200m
+        memory: 512Mi
+    
+    # Service Monitor Selector - quan trọng để tự động discover targets
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    
+    # Pod Monitor Selector
+    podMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelector: {}
+    
+    # Rule Selector
+    ruleSelectorNilUsesHelmValues: false
+    ruleSelector: {}
+    
+    # Scrape interval
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+
+# Grafana configuration
+grafana:
+  enabled: true
+  
+  # Admin credentials
+  adminPassword: "ninh123"
+  
+  # Service type - sử dụng NodePort để truy cập từ ngoài
+  service:
+    type: NodePort
+    nodePort: 30090
+  
+  # Persistence for Grafana data
+  persistence:
+    enabled: true
+    storageClassName: "standard"
+    size: 5Gi
+  
+  # Resource limits
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+# Alertmanager configuration
+alertmanager:
+  enabled: true
+  
+  # Service configuration
+  service:
+    type: NodePort
+    nodePort: 30093
+  
+  # Storage
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: "standard"
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 2Gi
+
+# Node Exporter - để monitor các node
+nodeExporter:
+  enabled: true
+
+# Kube State Metrics - để monitor Kubernetes objects
+kubeStateMetrics:
+  enabled: true
+
+# Prometheus Operator configuration
+prometheusOperator:
+  enabled: true
+  
+  # Service configuration
+  service:
+    type: ClusterIP
+  
+  # Resource limits
+  resources:
+    limits:
+      cpu: 200m
+      memory: 200Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+
+# Additional scrape configs - để scrape ML service của bạn
+additionalScrapeConfigs:
+  - job_name: 'ml-prediction-service'
+    static_configs:
+      - targets: ['loan-prediction-service:5000']  # Thay thế bằng tên service của bạn
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+    scrape_timeout: 10s
