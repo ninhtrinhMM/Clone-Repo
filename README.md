@@ -48,7 +48,7 @@ Mở Terminal ( Ctrl + Alt +T ) và gõ lần lượt các lệnh sau:
 
 ### b. Cấu trúc của Github Repo
 
-<img width="806" height="390" alt="Image" src="https://github.com/user-attachments/assets/ec751f78-10fa-4811-9da8-8944566b5dec" />
+<img width="806" height="390" alt="Image" src="https://github.com/user-attachments/assets/ec751f78-10fa-4811-9da8-8944566b5dec" />  
 
 ## 3. Khởi tạo Cluster GCP bằng Terraform
 
