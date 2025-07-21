@@ -146,7 +146,7 @@ Jenkins có vai trò tự động hóa trong các bước Test-kiểm, Build và
 
 ```docker compose -f jenkins-compose.yaml up -d```
 
-Trong quá trình khởi tạo Container, sẽ hiện ra Password như sau dùng để đăng nhập Jenkins, copy và lưu lại. Nếu không hiển thị như trong ảnh trên, vào Container Jenkins bằng command sau: ```docker logs jenkins-new```  để thấy được Password.
+Trong quá trình khởi tạo Container, sẽ hiện ra Password như sau dùng để đăng nhập Jenkins, copy và lưu lại. Nếu không hiển thị như trong ảnh trên, vào Container Jenkins bằng command sau: ```docker logs <tên container>```  để thấy được Password.
 
 <img width="942" height="294" alt="Image" src="https://github.com/user-attachments/assets/e7c59994-f456-45a3-8ce3-f5c76e4811cf" />  
 
