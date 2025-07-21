@@ -47,16 +47,16 @@ Mở Terminal ( Ctrl + Alt +T ) và gõ lần lượt các lệnh sau:
 - Mở VS Code và open Folder trên.
 
 ### b. Cấu trúc của Github Repo
-- jupyter-notebook-model     ## **Folder chứa file Jupyter-notebook và model được tải về**
+- jupyter-notebook-model     ## *Folder chứa file Jupyter-notebook và model được tải về*
   - ML_DL_Loan_Deal_Classification.ipynb     
   - model_ml.joblib 
-- prometheus     ## **Folder chứa cấu hình của prometheus và service monitor của Prometheus**
+- prometheus     ## *Folder chứa cấu hình của prometheus và service monitor của Prometheus*
   - prometheus-values.yaml
   - service-monitor.yaml
-- tests     ##**Folder chứa file Pytest cho model**
+- tests     ##*Folder chứa file Pytest cho model*
   - test-py.py
-- compose-jenkins.yaml
-- Dockerfile
+- compose-jenkins.yaml   ##*Docker compose chứa Image Jenkins*
+- Dockerfile    ##*Dockerfile được build từ ML-app.py*
 - Jaegar-deployment.yaml
 - Jenkinsfile
 - ML-app.py  ##**File main**
