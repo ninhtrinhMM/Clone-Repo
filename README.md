@@ -11,9 +11,9 @@
 9. [Các hệ thống giám sát](#9-Các-hệ-thống-giám-sát)
 -------------------------------------------------------------------------------------
 
-## 1. Giới thiệu tổng quát:
+## 1. Giới thiệu tổng quan:
 
-### a. Tổng quan về mô hình ML và mục đích triển khai hệ thống Ml-prediction: 
+### a. Tổng quan về mô hình ML và mục đích triển khai hệ thống ML-prediction: 
 - Mô hình Machine Learning trong Github Repo được huấn luyện với bộ dữ liệu chứa 45.000 bản ghi về người đăng ký vay vốn, với nhiều thuộc tính khác nhau liên quan đến:
   - Thông tin nhân khẩu học cá nhân
   - Tình hình tài chính
@@ -23,7 +23,7 @@
   - Đánh giá rủi ro tín dụng
   - Dự đoán khả năng vỡ nợ
 - Mô hình được Data Preprocessing bởi các phương pháp Label Encoding, Standard Scaler và sử dụng phương pháp GridsearchCV để tìm ra Hyper Parameter tốt nhát cho model. Kết quả là model đạt được Metric Accuracy lên đến 93%.  
-- Sau khi train model thành công, chúng ta triển khai model trên hệ thống Cluster (cụm máy) trên Google Cloud Platform, vận hành và xây dựng bởi luồng CI/CD Jenkins tự động tích hợp với Cloud K8S để nhận request từ người dùng.
+- Sau khi train model thành công, chúng ta triển khai model trên hệ thống Cluster (cụm máy) của Google Cloud Platform, vận hành và xây dựng bởi luồng CI/CD Jenkins tự động tích hợp với Cloud K8S để nhận request từ người dùng.
 
 ### **b. Sơ đồ Architecture System:** 
 
@@ -38,11 +38,14 @@
   
 ## 2. Chuẩn bị
 
-### a. Kéo Repo (Kho chứa các file và folder) trên Github về:
-Mở 1 folder trống bất kỳ trên máy Local bằng VS Code (hoặc IDE khác như Trae, Pycharm, Eclipse,..), xong mở Terminal trong đó và gõ lần lượt các lệnh sau: 
+### a. Kéo Repo (Kho chứa các file và folder) trên Github về:  
+
+Mở Terminal ( Ctrl + Alt +T ) và gõ lần lượt các lệnh sau: 
 - ```git init```
-- ```git pull https://github.com/ninhtrinhMM/15-7-25-MLops-01-Deploy-Bank-Loan-Prediction-model```
-- Ngay sau đó toàn bộ Github Repo từ link trên sẽ được tải về và hiển thị trong máy local, được gọi là Repo local.  
+- ```git clone https://github.com/ninhtrinhMM/15-7-25-MLops-01-Deploy-Bank-Loan-Prediction-model```
+- Ngay sau đó toàn bộ Github Repo từ link trên sẽ được tải về và hiển thị trong Folder tên là 15-7-25-MLops-01-Deploy-Bank-Loan-Prediction-model ở máy local, được gọi là Repo local.
+- Mở VS Code và open Folder trên.
+
 ### b. Cấu trúc của Github Repo
 - jupyter-notebook-model     ## **Folder chứa file Jupyter-notebook và model được tải về**
   - ML_DL_Loan_Deal_Classification.ipynb     
