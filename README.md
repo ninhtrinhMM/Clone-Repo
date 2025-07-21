@@ -103,7 +103,7 @@ Nếu thấy tên của Cluster trùng với tên Cluster được thiết lập
 
 Vì Jaeger là 1 công cụ theo dõi Trace được định nghĩa sẵn trong file ML-app.py (file main) nên chúng ta cần triển khai Jaegar trước có thể theo dõi Trace ngay khi app khởi động.  
 
-Trước hết đảm bảo vào đúng trong Cluster được tạo ở bước trước bằng command sau:  
+Trước hết đảm bảo đã kết nối tới Cluster được tạo ở bước trước bằng command sau:  
 
 ```gcloud container clusters get-credentials <Tên Cluster> --zone <Nơi đặt máy> --project <Tên Project>```  
 
@@ -445,7 +445,7 @@ Xong ấn Execute để gửi Request tới Model, kéo xuống dưới và th�
 
 ### a. Prometheus:  
 
-Để cài Prometheus, trước hết đảm bảo đã ở trong Cluster:  
+Để cài Prometheus, trước hết đảm bảo đã kết nối tới Cluster:  
 
 ```gcloud container clusters get-credentials <Tên Cluster> --zone <Vị trí đặt máy> --project <Tên dự án>```  
 
