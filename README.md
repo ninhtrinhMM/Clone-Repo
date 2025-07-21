@@ -64,6 +64,17 @@ Mở Terminal ( Ctrl + Alt +T ) và gõ lần lượt các lệnh sau:
 - note-attention.txt
 - terraform.tf
 
+
+project-root/
+│
+├── 📁 **app/**                  # Thư mục chứa ứng dụng chính  
+│   ├── 📄 `main.py`             # File khởi chạy ứng dụng  
+│   └── 📁 `utils/`              # Thư viện hỗ trợ (xử lý data, helper functions)  
+│
+└── 📁 **data/**                 # Thư mục chứa dữ liệu  
+    ├── 📄 `raw_data.csv`        # Dữ liệu gốc chưa xử lý  
+    └── 📄 `processed_data/`     # Dữ liệu đã làm sạch (feature engineering)  
+
 ## 3. Khởi tạo Cluster GCP bằng Terraform
 
 Truy cập vào https://console.cloud.google.com/ và đăng nhập bằng tài khoản Google.  
