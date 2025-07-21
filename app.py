@@ -76,7 +76,7 @@ error_counter = Counter(
 app = FastAPI(title="ML Prediction Service", version="0.1.0")
 
 # Biến global để cache model
-cached_model = None
+# cached_model = None
 
 # 2. Tạo decorator trace-span để tự động trace cho các function
 def trace_span(span_name):
@@ -97,17 +97,9 @@ def trace_span(span_name):
 # 3. Load model với tracing
 @trace_span("model-loader")
 def load_model():
-    global cached_model
-    if cached_model is not None:
-        return cached_model
-    
     try:
-        logger.info("Loading model...")
-        
-        cached_model = joblib.load("model_ml.joblib")
-        logger.info("Model loaded successfully")
-        
-        return cached_model
+        model = joblib.load("model_ml.joblib")
+        return model
     except Exception as e:
         logger.error(f"Error loading model: {e}")
         

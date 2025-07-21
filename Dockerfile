@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 
-COPY ML-app.py .
+COPY app.py .
 
 COPY jupyter-notebook-model/model_ml.joblib /app/
 # Copy model_ml.joblib file vào COntainer
@@ -22,4 +22,4 @@ EXPOSE 5000
 
 
 # Run the application
-CMD ["python", "ML-app.py"]
+CMD ["python", "app.py"]
