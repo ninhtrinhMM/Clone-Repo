@@ -8,9 +8,9 @@ pipeline {
     
     environment {
         
-    // ** Repository hiện đang có trên DockerHubp
+    // Repository hiện đang có trên DockerHubp
         registry = 'ninhtdmorningstar/loan-prediction-ml' 
-    // ** credential ID của Docker Hub đã được thêm vào Jenkinssss
+    // credential ID của Docker Hub đã được thêm vào Jenkinssss
         registryCredential = 'dockerhub-credential'
     
         APP_NAME = 'loan-prediction'
@@ -37,10 +37,8 @@ pipeline {
                 '''
             }
         }
-        
-        
-        
-        stage('Test with Docker') {
+                   
+        stage('Testing') {
             agent {
                 docker {
                     image 'python:3.8-slim'
