@@ -15,7 +15,7 @@
 
 ### a. Tổng quan về mô hình ML và mục đích triển khai hệ thống ML-prediction: 
 - Mô hình Machine Learning trong Github Repo được huấn luyện với bộ dữ liệu chứa 45.000 bản ghi về người đăng ký vay vốn, với nhiều thuộc tính khác nhau liên quan đến:
-  - Thông tin nhân khẩu học cá nhân
+  - Thông tin nhân khẩu học cá nhân..
   - Tình hình tài chính
   - Chi tiết khoản vay
 - Bộ dữ liệu được sử dụng cho:
