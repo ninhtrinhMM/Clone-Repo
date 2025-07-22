@@ -56,7 +56,7 @@ pipeline {
                     pip install -r requirements.txt
                     
                     echo "=== Running Tests ==="
-                    python -m pytest tests/test-py.py -v || echo "Tests completed"
+                    python -m pytest tests/test_model_prediction.py -v || echo "Tests completed"
                 '''
             }
         }
