@@ -24,6 +24,8 @@ from opentelemetry.metrics import get_meter_provider, set_meter_provider
 
 # Import Prometheus client
 from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST, REGISTRY
+# Bổ sung 
+from contextlib import asynccontextmanager 
 
 # Thiết lập logging
 logging.basicConfig(level=logging.INFO)
@@ -72,11 +74,30 @@ error_counter = Counter(
     ['operation', 'error_type']
 )
 
-# Tạo FastAPI app
-app = FastAPI(title="ML Prediction Service", version="0.1.0")
+### Bổ sung Lifespan context
+cached_model = None
 
-# Biến global để cache model
-# cached_model = None
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    logger.info("Service start...")
+    global cached_model
+    try:
+        cached_model = load_model()
+        logger.info("Model load succesfully")
+    except Exception as e:
+        logger.error(f"Failed to load model during startup: {e}")
+    
+    yield
+    
+    # Shutdown n cleanup
+    logger.info("Shutting down ML Prediction Service...")
+    cached_model = None
+    
+# Tạo FastAPI app
+app = FastAPI(title="ML Prediction Service", 
+              version="0.1.0",
+              lifespan=lifespan)
 
 # 2. Tạo decorator trace-span để tự động trace cho các function
 def trace_span(span_name):
@@ -213,14 +234,12 @@ def root():
 @app.get("/health")
 def health():
     try:
-        # Kiểm tra xem model có load được không
-        model_loaded = cached_model is not None
-        if not model_loaded:
-            try:
-                load_model()
-                model_loaded = True
-            except:
-                model_loaded = False
+        # Kiểm tra xem có thể load model được không
+        try:
+            load_model()
+            model_loaded = True
+        except:
+            model_loaded = False
         
         return {
             "status": "healthy",
@@ -233,16 +252,6 @@ def health():
             "status": "unhealthy",
             "error": str(e)
         }
-
-# Load model khi startup
-@app.on_event("startup")
-def startup_event():
-    logger.info("Starting ML Prediction Service...")
-    try:
-        load_model()
-        logger.info("Model loaded successfully during startup")
-    except Exception as e:
-        logger.error(f"Failed to load model during startup: {e}")
 
 if __name__ == "__main__":
     import uvicorn
