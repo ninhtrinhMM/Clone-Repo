@@ -130,46 +130,6 @@ def test_data_validation():
         print(f"✗ Data validation test failed: {e}")
         return False
 
-def run_all_tests():
-    """Chạy tất cả tests"""
-    tests = [
-        ("Model Correctness", test_model_correctness),
-        ("Multiple Predictions", test_multiple_predictions),
-        ("Data Validation", test_data_validation)
-    ]
-    
-    print("="*60)
-    print("🚀 RUNNING ML MODEL TESTS")
-    print("="*60)
-    
-    passed = 0
-    failed = 0
-    
-    for test_name, test_func in tests:
-        print(f"\n📋 Running: {test_name}")
-        print("-" * 40)
-        
-        if test_func():
-            passed += 1
-            print(f"✅ {test_name} PASSED")
-        else:
-            failed += 1
-            print(f"❌ {test_name} FAILED")
-            
-    print("="*60)
-    print("📊 TEST SUMMARY")
-    print("="*60)
-    print(f"✅ Passed: {passed}")
-    print(f"❌ Failed: {failed}")
-    print(f"📈 Total: {passed + failed}")
-    
-    if failed == 0:
-        print("\n🎉 ALL TESTS PASSED - Model is ready for deployment!")
-        return 0
-    else:
-        print(f"\n💥 {failed} TEST(S) FAILED - Please fix the issues above")
-        return 1
-
 if __name__ == '__main__':
     
     #### Chạy tests và thoát ####
