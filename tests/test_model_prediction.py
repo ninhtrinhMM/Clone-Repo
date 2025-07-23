@@ -131,8 +131,12 @@ def test_data_validation():
         return False
 
 if __name__ == '__main__':
+    tests = [test_model_correctness, test_multiple_predictions, test_data_validation]
     
-    #### Chạy tests và thoát ####
+    for test_func in tests:
+        if not test_func():
+            print(f"FAILED: {test_func.__name__}")
+            sys.exit(f"Test bị fail tại {test_func.__name__}")  # Thoát với message
     
-    exit_code = run_all_tests()
-    sys.exit(exit_code)
+    print("Succeed at Testing!")
+    sys.exit(0)
