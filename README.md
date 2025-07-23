@@ -25,7 +25,9 @@
 - Mô hình được Data Preprocessing bởi các phương pháp Label Encoding, Standard Scaler và sử dụng phương pháp GridsearchCV để tìm ra Hyper Parameter tốt nhát cho model. Kết quả là model đạt được Metric Accuracy lên đến 93%.  
 - Sau khi train model thành công, chúng ta triển khai model trên hệ thống Cluster (cụm máy) của Google Cloud Platform, vận hành và xây dựng bởi luồng CI/CD Jenkins tự động tích hợp với Cloud K8S để nhận request từ người dùng.
 
-### **b. Sơ đồ Architecture System:** 
+### **b. Sơ đồ Architecture System:**  
+
+<img width="4286" height="2703" alt="Image" src="https://github.com/user-attachments/assets/27441b99-d966-4017-bd37-6d68249f3a1b" />  
 
 ### **c. Các công cụ cần cài đặt sẵn trên hệ điều hành Ubuntu:** 
 
