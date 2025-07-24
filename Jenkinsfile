@@ -155,8 +155,8 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 5000
-      nodePort: 30080
-  type: NodePort
+      
+  type: LoadBalancer
 """
             
             // Cài đặt kubectl
