@@ -172,7 +172,7 @@ spec:
             // Kiểm tra kubectl đã cài đặt
             sh '$HOME/k8s-tools/kubectl version --client'
             // Áp dụng lên cluster
-            withKubeConfig([credentialsId: 'ninh-k8s-jenins-connect', serverUrl: 'https://34.126.111.71']) {
+            withKubeConfig([credentialsId: 'ninh-k8s-cloud', serverUrl: 'https://34.126.111.71']) {
                 sh '$HOME/k8s-tools/kubectl apply -f deployment.yaml'
                 sh '$HOME/k8s-tools/kubectl apply -f service.yaml'
                 
