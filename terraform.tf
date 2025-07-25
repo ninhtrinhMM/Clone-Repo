@@ -18,7 +18,7 @@ resource "google_container_cluster" "my-gke" {
 	name     = "gke-ml-ops-02"				
 	location = "asia-southeast1-a"
 	network = "default"				
-	// Tạo Node bên trong GKE				
+	// Tạo Node bên trong Cluster				
 	node_pool {				
 		name = "node-mlops"			
 		node_count = 3			
