@@ -9,12 +9,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: service-monitor  # Thay thế bằng label của service trong deployment
+      app: service-monitor  ### Thay thế bằng label của service trong deployment
   endpoints:
-  - port: http  # Tên Port trong service của deployment
+  - port: http  ### Tên Port trong service của deployment
     path: /metrics
     interval: 30s
     scrapeTimeout: 10s
   namespaceSelector:
     matchNames:
-    - model-serving  # Thay thế bằng namespace của service trong Deplotment
+    - model-serving  ### Thay thế bằng namespace của service trong Deplotment
