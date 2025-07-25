@@ -14,7 +14,7 @@ pipeline {
         registryCredential = 'dockerhub-credential'
     
         APP_NAME = 'loan-prediction'
-        NAMESPACE = 'default'
+        NAMESPACE = 'model-serving'
     }
     
     stages {
@@ -171,17 +171,25 @@ spec:
             '''
             // Kiểm tra kubectl đã cài đặt
             sh '$HOME/k8s-tools/kubectl version --client'
+            
             // Áp dụng lên cluster
             withKubeConfig([credentialsId: 'ninh-k8s-cloud', serverUrl: 'https://34.126.111.71']) {
+                // Tạo namespace
+                echo "Check if this namespace is already exits or not..."
+                sh '''
+                    ### Kiểm tra namespace có tồn tại không, nếu không thì tạo mới
+                    $HOME/k8s-tools/kubectl get namespace ${NAMESPACE} 2>/dev/null || $HOME/k8s-tools/kubectl create namespace ${NAMESPACE}
+                    echo "Namespace ${NAMESPACE} is ready!"
+                '''
                 sh '$HOME/k8s-tools/kubectl apply -f deployment.yaml'
                 sh '$HOME/k8s-tools/kubectl apply -f service.yaml'
                 
-                // Kiểm tra
-                sh '$HOME/k8s-tools/kubectl get pods'
-                sh '$HOME/k8s-tools/kubectl get svc'
-                   }
+                // Kiểm tra (thêm namespace flag để chính xác)
+                sh '$HOME/k8s-tools/kubectl get pods -n ${NAMESPACE}'
+                sh '$HOME/k8s-tools/kubectl get svc -n ${NAMESPACE}'
+                    }
                 }
             }
         }
-    }  
-}      
+    }      
+}
