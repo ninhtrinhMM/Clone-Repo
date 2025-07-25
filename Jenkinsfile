@@ -14,7 +14,7 @@ pipeline {
         registryCredential = 'dockerhub-credential'
     
         APP_NAME = 'loan-prediction'
-        NAMESPACE = 'default'
+        NAMESPACE = 'model-serving'
     }
     
     stages {
@@ -142,7 +142,7 @@ metadata:
   name: ${APP_NAME}-service
   namespace: ${NAMESPACE}
   labels:
-    app: service-monitor ## match label của Service Monitor
+    app: service-monitor  
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "5000"
@@ -156,7 +156,7 @@ spec:
       port: 80
       targetPort: 5000
       
-  type: LoadBalancer
+  type: ClusterIP
 """
             
             // Cài đặt kubectl

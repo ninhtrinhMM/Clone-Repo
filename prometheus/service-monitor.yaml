@@ -17,4 +17,4 @@ spec:
     scrapeTimeout: 10s
   namespaceSelector:
     matchNames:
-    - default  # Thay thế bằng namespace của service trong Deplotment
+    - model-serving  # Thay thế bằng namespace của service trong Deplotment

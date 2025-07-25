@@ -15,7 +15,7 @@ provider "google" {
 }					
 // Google Kubernetes Engine					
 resource "google_container_cluster" "my-gke" {					
-	name     = "gke-ml-ops-01"				
+	name     = "gke-ml-ops-02"				
 	location = "asia-southeast1-a"
 	network = "default"				
 	// Tạo Node bên trong GKE				
@@ -28,19 +28,19 @@ resource "google_container_cluster" "my-gke" {
 				
 		}			
 	}
-	remove_default_node_pool = true
+	remove_default_node_pool = false // Giữ lại node pool mặc định, có thể sử dụng nếu cần
 	initial_node_count = 0 // Không tạo node pool mặc định, chỉ sử dụng node pool đã tạo ở trên				
 }					
 // Google Storage Bucket					
 resource "google_storage_bucket" "my-bucket" {					
-	name          = "bucket-store"			
+	name          = "bucket-store-v2"			
 	location      = "asia-southeast1" 		
 	force_destroy = true				
 	uniform_bucket_level_access = true				
 }					
 // Firewall					
 resource "google_compute_firewall" "firewall-mlops"{					
-	name    = "firewall-mlops"				
+	name    = "firewall-mlops-v2"				
 	network = "default"				
 	allow {				
 		protocol = "tcp"			
