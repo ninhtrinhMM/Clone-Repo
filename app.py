@@ -42,7 +42,7 @@ set_tracer_provider(
 # Tạo Jaeger Exporter
 jaeger_exporter = JaegerExporter(
     #agent_host_name="jaeger",
-    agent_host_name="jaeger.monitoring.svc.cluster.local",  # Sử dụng DNS của Jaeger trong Cluster để trỏ đến service Jaeger nằm ở namespace "monitoring"
+    agent_host_name="jaeger.monitoring.svc.cluster.local",  # Sử dụng DNS của Jaeger trong Cluster --> trỏ đến service Jaeger nằm ở namespace "monitoring"
     agent_port=6831,
 )
 
