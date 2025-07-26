@@ -39,10 +39,10 @@ set_tracer_provider(
     TracerProvider(resource=resource)
 )
 
-# Tạo Jaeger Exporterttt
+# Tạo Jaeger Exporter
 jaeger_exporter = JaegerExporter(
     #agent_host_name="jaeger",
-    agent_host_name="jaeger.default.svc.cluster.local",  # Sử dụng DNS của Jaeger trong Kubernetes
+    agent_host_name="jaeger.monitoring.svc.cluster.local",  # Sử dụng DNS của Jaeger trong Cluster để trỏ đến service Jaeger nằm ở namespace "monitoring"
     agent_port=6831,
 )
 
