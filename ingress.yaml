@@ -19,7 +19,7 @@ spec:
   - host: ninhmlops01.com
     http:
       paths:
-      - path: /service(/|$)(.*)
+      - path: /service(/|$)(.*) # (/|$)(.*) là để bắt mọi đường dẫn con
         pathType: Prefix
         backend:
           service:
