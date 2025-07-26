@@ -173,7 +173,7 @@ spec:
             sh '$HOME/k8s-tools/kubectl version --client'
             
             // Áp dụng lên cluster
-            withKubeConfig([credentialsId: 'ninh-k8s-cloud', serverUrl: 'https://34.126.111.71']) {
+            withKubeConfig([credentialsId: 'broke-for-sure', serverUrl: 'https://34.126.111.71']) {
                 // Tạo namespace
                 echo "Check if this namespace is already exits or not..."
                 sh '''
