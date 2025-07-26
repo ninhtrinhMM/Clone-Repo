@@ -4,14 +4,22 @@ metadata:
   name: ninh-ingress
   namespace: model-serving
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      # Redirect /service and /service/ to /service/docs
+      if ($request_uri = /service) {
+        return 301 /service/docs;
+      }
+      if ($request_uri = /service/) {
+        return 301 /service/docs;  
+      }
 spec:
   ingressClassName: nginx
   rules:
-  - host: ninhmlops01.com  ### Domain
+  - host: ninhmlops01.com
     http:
       paths:
-      - path: /service
+      - path: /service(/|$)(.*)
         pathType: Prefix
         backend:
           service:
