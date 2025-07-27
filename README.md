@@ -97,7 +97,7 @@ Trước hết đảm bảo đã kết nối tới Cluster được tạo ở b�
 
 <img width="835" height="255" alt="Image" src="https://github.com/user-attachments/assets/cf3ccc49-92f4-4c9d-983e-5695e50ad74f" />  
 
-Vì trong jaegar-deployment.yaml được để trong namespace "monitoring" nên trước khi chạy file, ta cần thiết lập namespace "monitoring" trước và thực thi file jaegar-deployment.yaml sau bằng command sau:  
+Vì jaegar-deployment.yaml có setup năm trong namespace "monitoring" nên trước khi chạy file, ta cần thiết lập namespace "monitoring" trước và thực thi file jaegar-deployment.yaml sau bằng command sau:  
 
 ```kubectl create namespace monitoring && kubectl apply -f jaegar-deployment.yaml```  
 
