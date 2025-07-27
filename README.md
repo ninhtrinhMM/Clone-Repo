@@ -97,19 +97,21 @@ Trước hết đảm bảo đã kết nối tới Cluster được tạo ở b�
 
 <img width="835" height="255" alt="Image" src="https://github.com/user-attachments/assets/cf3ccc49-92f4-4c9d-983e-5695e50ad74f" />  
 
-Xong chạy file Jaegar-deployment.yaml bằng command:  
+Vì trong jaegar-deployment.yaml được để trong namespace "monitoring" nên trước khi chạy file, ta cần thiết lập namespace "monitoring" trước và thực thi file jaegar-deployment.yaml sau bằng command sau:  
 
-```kubectl apply -f Jaegar-deployment.yaml```  
+```kubectl create namespace monitoring && kubectl apply -f jaegar-deployment.yaml```  
 
-Chạy xong, kiểm tra bằng command: ```kubectl get pod``` và ```kubectl get svc```  
+Chạy xong, kiểm tra bằng command: ```kubectl get pod -n monitoring``` và ```kubectl get svc -n monitoring```  
 
-<img width="1177" height="383" alt="Image" src="https://github.com/user-attachments/assets/4d48cf68-7ee4-44ae-8eca-5dbad6c0b221" />  
-
-Để truy cập được vào Jaeger, sử dụng port-forward: ```kubectl port-forward svc/jaeger 16686:16686``` sau đó truy cập vào localhost:16686, nếu thấy giao diện Jaeger hiện lên tức thành công.  
+Để truy cập được vào Jaeger, sử dụng port-forward: ```kubectl port-forward -n monitoring svc/jaeger 16686:16686``` sau đó truy cập vào localhost:16686, nếu thấy giao diện Jaeger hiện lên tức thành công.  
 
 <img width="960" height="524" alt="Image" src="https://github.com/user-attachments/assets/1eb5169d-8581-4bbe-94ef-a552b6af305f" />    
 
-**NOTE: Tất cả các thao tác mới với Terminal phải làm trên Terminal mới. Terminal hiện tại là để chứa Log của Jaeger.** 
+**NOTE: Tất cả các thao tác mới với Terminal phải làm trên Terminal mới. Terminal hiện tại là để chứa Log của Jaeger.**  
+
+<img width="474" height="147" alt="Image" src="https://github.com/user-attachments/assets/15dd48c4-9252-468c-bdcd-9f732f8b4e5e" />  
+
+**NOTE: Để Jaeger có thể tracing được service của app, phải setup jaeger_exporter trong app.py chứa agent_host_name được tạo từ đúng namespace của service trong Cluster** 
 
 ## **5. Khởi tạo Github Repo**  
 Truy cập github.com, tạo tài khoản nếu chưa có và khởi tạo 1 Repository ( Kho lưu trữ các file ) mới, điền Repository Name và để ở chế độ **PUBLIC**.   
