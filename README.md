@@ -27,7 +27,7 @@
 
 ### **b. Sơ đồ Architecture System:**  
 
-<img width="4286" height="2703" alt="Image" src="https://github.com/user-attachments/assets/27441b99-d966-4017-bd37-6d68249f3a1b" />  
+<img width="4929" height="3183" alt="Image" src="https://github.com/user-attachments/assets/283a666b-87ec-4d56-ac37-898e26925bea" />  
 
 ### **c. Các công cụ cần cài đặt sẵn trên hệ điều hành Ubuntu:** 
 
@@ -403,21 +403,49 @@ Hiển thị như trong hình nghĩa là luồng Jenkins đã chạy thành côn
 
 <img width="1212" height="596" alt="Image" src="https://github.com/user-attachments/assets/38c4313c-1009-498c-833a-8eba84c10f89" />  
 
-### d. Check kết quả API trả về:  
+### d. Triển khai Service thông qua Ingress và Check kết quả API trả về:  
 
-Check các Pod của file deployment.yaml được triển khai thành công: ```kubectl get pod -o wide```  
+Check các Pod của file deployment.yaml được triển khai thành công: 
+
+```kubectl get pod -o wide -n model-serving```  
+
+```kubectl get pod -o wide -n monitoring```  
 
 Như trong hình ta thấy hiện có 4 Pod, 3 Pod thuộc được Jenkins triển khai và 1 pod Jaeger nằm trong 3 Node của Cluster.  
 
-<img width="985" height="238" alt="Image" src="https://github.com/user-attachments/assets/09d0ddd6-d279-42ea-9d0b-8e9b9a85d85c" />  
+<img width="890" height="278" alt="Image" src="https://github.com/user-attachments/assets/2d21e993-effc-4692-98fa-8d27fe0ba7c6" />  
 
-Service của deployment khi Jenkins triển khai là Node Port nên đê truy cập được vào service, chúng ta cần External IP của Node, chạy lệnh: ```kubectl get node -o wide``` và lấy External IP của 1 Node bất kỳ.  
+Service của app có type là ClusterIP. Để có thể triển khai Service chúng ta sử dụng **Ingress Nginx Controller**. Đầu tiên triển khai Ingress NGINX Controller nhằm quản lý quyền truy cập từ bên ngoài vào các Service bên trong Cluster bằng command sau:  
 
-<img width="977" height="155" alt="Image" src="https://github.com/user-attachments/assets/c4092aee-fa83-4970-94d8-4b015999ef1d" />  
+```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml```  
 
-Sau đó truy cập ```<External-IP-Node>:<nodePort của Service>/docs``` để vào Fast API của App. Giao diện hiện ra như trong ảnh tức Service đã triển khai thành công.  
+Hoàn thiên xong có thể kiểm tra pod và service của Ingress NGINX Controller dã được cài đật hay chưa: ```kubectl get pods -n ingress-nginx```  
 
-<img width="1011" height="488" alt="Image" src="https://github.com/user-attachments/assets/a8ccd6e9-a698-49fe-a9b7-240e221dccf5" />  
+Kiểm tra Service của Ingress NGINX Controller : ```kubectl get svc -n ingress-nginx```  
+
+Service này sẽ có External IP hiển thị, copy dãy External IP.  
+
+<img width="884" height="136" alt="Image" src="https://github.com/user-attachments/assets/668e0091-a867-4c00-889c-3124be95303f" />  
+
+Mở file ingress.yaml ở Repo local lên, thay đổi giá trị "host:" bằng IP ban nãy: <External IP>.nip.io  
+
+<img width="754" height="554" alt="Image" src="https://github.com/user-attachments/assets/878f7282-6416-4624-a2c3-c8e04dc63782" />  
+
+Đảm bảo phần name của service là tên của service của app và port number phải trùng với port nội bộ của service.  
+
+<img width="564" height="316" alt="Image" src="https://github.com/user-attachments/assets/918c612b-19c2-44b9-b249-d98397eb3b5b" />  
+
+Tiếp theo triển khai ingress.yaml bằng lệnh: ```kubectl apply -f ingress.yaml```  
+
+Kiểm tra kết quả triển khai: ```kubectl get ingress -n model-serving```  
+
+**NOTE**: ingress và service của app phải cùng nằm trong 1 namespace thì Ingress NGINX mới có thể truy cập vào service cần đến được.  
+
+<img width="467" height="144" alt="Image" src="https://github.com/user-attachments/assets/6e9afc68-294b-403b-9aab-0204213f5939" />  
+
+Sau khi triển khai ingress.yaml xong, truy cập theo link sau: ```http://<External IP>.nip.io/docs``` để truy cập vào Service. Nếu hiển thị như tng hình nghĩa là đã truy cập vào Service của app thông qua Ingress NGINX thành công.  
+
+<img width="851" height="650" alt="Image" src="https://github.com/user-attachments/assets/11f0a62e-575a-4b35-a713-80ed40967cb9" />   
 
 Trước khi chạy thử, đầu tiên chúng ta cần lấy 1 trường hợp bất kỳ trong Datatable chứa 45000 trường hợp vay vốn. Mở file ML_DL_Loan_Deal_Classification.ipynb trong Folder jupyter-notebook-model, kéo xuống mục số 7 và copy dãy 14 số trong hình, bỏ số 0 ở cuối vì đây là Target Label ( 0 là vỡ nợ, 1 là trả được nợ ), đây chính là 13 feature được dùng đẻ train cho mô hình.    
 
