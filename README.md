@@ -427,13 +427,13 @@ Service này sẽ có External IP hiển thị, copy dãy External IP.
 
 <img width="884" height="136" alt="Image" src="https://github.com/user-attachments/assets/668e0091-a867-4c00-889c-3124be95303f" />  
 
-Mở file ingress.yaml ở Repo local lên, thay đổi giá trị "host:" bằng IP ban nãy: <External IP>.nip.io  
+Mở file ingress.yaml ở Repo local lên, thay đổi giá trị "host:" bằng IP ban nãy: << External IP ban nãy>>.nip.io  
 
-<img width="754" height="554" alt="Image" src="https://github.com/user-attachments/assets/878f7282-6416-4624-a2c3-c8e04dc63782" />  
+<img width="722" height="287" alt="Image" src="https://github.com/user-attachments/assets/79d9c03f-81c7-41be-af58-1934f86cb265" />  
 
 Đảm bảo phần name của service là tên của service của app và port number phải trùng với port nội bộ của service.  
 
-<img width="564" height="316" alt="Image" src="https://github.com/user-attachments/assets/918c612b-19c2-44b9-b249-d98397eb3b5b" />  
+<img width="692" height="289" alt="Image" src="https://github.com/user-attachments/assets/7a86c6a7-b479-41e2-8f6b-30a91baaf50d" />  
 
 Tiếp theo triển khai ingress.yaml bằng lệnh: ```kubectl apply -f ingress.yaml```  
 
