@@ -10,15 +10,8 @@ spec:
   - host: 35.198.250.241.nip.io
     http:
       paths:
-      - path: /docs
+      - path: /  
         pathType: Prefix
-        backend:
-          service:
-            name: loan-prediction-service
-            port:
-              number: 80
-      - path: /openapi.json
-        pathType: Exact
         backend:
           service:
             name: loan-prediction-service

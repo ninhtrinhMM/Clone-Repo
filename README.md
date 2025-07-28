@@ -443,7 +443,7 @@ Kiểm tra kết quả triển khai: ```kubectl get ingress -n model-serving```
 
 <img width="467" height="144" alt="Image" src="https://github.com/user-attachments/assets/6e9afc68-294b-403b-9aab-0204213f5939" />  
 
-Sau khi triển khai ingress.yaml xong, truy cập theo link sau: ```http://<External IP>.nip.io/docs``` để truy cập vào Service. Nếu hiển thị như tng hình nghĩa là đã truy cập vào Service của app thông qua Ingress NGINX thành công.  
+Sau khi triển khai ingress.yaml xong, truy cập theo link sau: ```http://<External IP>.nip.io/docs``` để truy cập vào Service. Nếu hiển thị như trong hình nghĩa là đã truy cập vào Service của app thông qua Ingress NGINX thành công.  
 
 <img width="851" height="650" alt="Image" src="https://github.com/user-attachments/assets/11f0a62e-575a-4b35-a713-80ed40967cb9" />   
 
