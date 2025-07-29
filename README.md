@@ -613,4 +613,5 @@ Click vào 1 trong 7 request bất kỳ ở dưới, chúng ta sẽ thấy đư�
 
 Hệ thống bao gồm các bước xây dựng Model, triển khai Model bằng Jenkins lên hạ tầng GKE của Google Cloud kèm theo Observable System được vận hành thành công.  
 
-                  ----**THANKS YOU FOR READING TILL HERE, GOOD LUCK !**----
+                  ----**THANKS YOU ALL FOR READING TILL HERE, GOOD LUCK !**----
+   ----**SPECIAL THANKS TO MY ENTHUSIASTIC LECTURE: [Quan-Dang](https://www.linkedin.com/in/quan-dang/)**---- 
