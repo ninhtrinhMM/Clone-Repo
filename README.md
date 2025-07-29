@@ -599,7 +599,7 @@ Tổng hợp lại Dashboard lớn sẽ bao gồm 4 bảng nhỏ như sau từ t
 
 <img width="1319" height="562" alt="Image" src="https://github.com/user-attachments/assets/25c517b0-4769-453c-93f1-7128779ec5cd" />  
 
-Ở phần Service nếu search thấy tên service là "ml-prediction-service" như trong file ML-app.py định nghĩa Resource cho cả Metric lẫn Tracing ( resource = Resource.create({SERVICE_NAME: "ml-prediction-service"}) ) thì nghĩa là Jaeger đã bắt được trace thành công từ ML-app.py. Chọn đúng tên Service và ấn Find trace. 
+Ở phần Service nếu search thấy tên service là "ml-prediction-service" như trong file ML-app.py định nghĩa Resource cho cả Metric lẫn Tracing ( resource = Resource.create({SERVICE_NAME: "ml-prediction-service"}) ) thì nghĩa là Jaeger đã bắt được trace thành công từ app.py. Chọn đúng tên Service và ấn Find trace. 
 
 <img width="1315" height="562" alt="Image" src="https://github.com/user-attachments/assets/3a928e46-ae25-445c-aab6-733cc3ec6b1c" />  
 
