@@ -27,7 +27,7 @@
 
 ### **b. Sơ đồ Architecture System:**  
 
-<img width="4929" height="3183" alt="Image" src="https://github.com/user-attachments/assets/283a666b-87ec-4d56-ac37-898e26925bea" />  
+<img width="4929" height="3183" alt="Image" src="https://github.com/user-attachments/assets/2af15151-2b90-4168-96e8-6f1836c16a3e" />  
 
 ### **c. Các công cụ cần cài đặt sẵn trên hệ điều hành Ubuntu:** 
 
